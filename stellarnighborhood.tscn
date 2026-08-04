@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c6so7pchh4mrt"]
+
+[ext_resource type="Script" uid="uid://brj3h0lrifdb" path="res://stellarnighborhood.gd" id="1_q2mbo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_lb4ya"]
+
+[node name="Node3D" type="Node3D" unique_id=7774664]
+script = ExtResource("1_q2mbo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=131839979]
+visible = false
+mesh = SubResource("SphereMesh_lb4ya")

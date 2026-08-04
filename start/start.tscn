@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bcn8bvr8bit4k"]
+
+[ext_resource type="Script" uid="uid://cngj0wmvi825i" path="res://start/start.gd" id="1_275hl"]
+[ext_resource type="PackedScene" uid="uid://cthjy0uarg7ws" path="res://main/sidebar.tscn" id="2_pgi65"]
+[ext_resource type="Script" uid="uid://bq3gbtkexkrw1" path="res://start/galaxymake.gd" id="3_pgi65"]
+[ext_resource type="Script" uid="uid://dina4f0boe7sn" path="res://start/stellar_nighborhoodMaker.gd" id="4_k11ym"]
+
+[node name="start" type="Control" unique_id=1499677919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_275hl")
+
+[node name="sidebar" parent="." unique_id=1188306244 instance=ExtResource("2_pgi65")]
+layout_mode = 0
+offset_bottom = 653.0
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=777432335]
+layout_mode = 0
+offset_left = 129.0
+offset_right = 1159.0
+offset_bottom = 654.0
+current_tab = 1
+
+[node name="Galaxy" type="PanelContainer" parent="TabContainer" unique_id=204116451]
+visible = false
+layout_mode = 2
+script = ExtResource("3_pgi65")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Galaxy" unique_id=1018075628]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="TabContainer/Galaxy/VBoxContainer" unique_id=863731746]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Galaxy setup"
+
+[node name="Container" type="HBoxContainer" parent="TabContainer/Galaxy/VBoxContainer" unique_id=107385571]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="TabContainer/Galaxy/VBoxContainer/Container" unique_id=2082025639]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Galaxtic radius(kiloly)"
+
+[node name="LineEdit" type="SpinBox" parent="TabContainer/Galaxy/VBoxContainer/Container" unique_id=467383679]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Container2" type="HBoxContainer" parent="TabContainer/Galaxy/VBoxContainer" unique_id=128420556]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="TabContainer/Galaxy/VBoxContainer/Container2" unique_id=1014590345]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Galactic Habitable Zone(kly):"
+
+[node name="Label4" type="Label" parent="TabContainer/Galaxy/VBoxContainer/Container2" unique_id=1389135933]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Stellar nighborhood" type="PanelContainer" parent="TabContainer" unique_id=1398136542]
+layout_mode = 2
+script = ExtResource("4_k11ym")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stellar nighborhood" unique_id=2032916494]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=360638941]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 8.175)
+offset_transform_visual_only = false
+text = "nighborhood"
+
+[node name="Note" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1580649568]
+layout_mode = 2
+text = "Note: this step it optional there is no relice on the steo from the previos ones"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1039990987]
+layout_mode = 2
+
+[node name="size" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=1201557916]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 8.175)
+offset_transform_visual_only = false
+text = "size  "
+
+[node name="LineEdit" type="SpinBox" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=314396728]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=1189834973]
+layout_mode = 2
+text = "0 light year"
+
+[node name="Button" type="Button" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=61949454]
+layout_mode = 2
+text = "see 3d nieghborhood"
+
+[node name="Star" type="PanelContainer" parent="TabContainer" unique_id=1991512021]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Star system" type="PanelContainer" parent="TabContainer" unique_id=962628949]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Home planet" type="PanelContainer" parent="TabContainer" unique_id=671613566]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[connection signal="value_changed" from="TabContainer/Galaxy/VBoxContainer/Container/LineEdit" to="TabContainer/Galaxy" method="_on_line_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer/LineEdit" to="TabContainer/Stellar nighborhood" method="_on_line_edit_value_changed"]

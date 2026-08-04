@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b680gedqhnsbt"]
+
+[ext_resource type="Script" uid="uid://bpg5g54kft73w" path="res://main/scripts/node.gd" id="1_sy5k4"]
+
+[sub_resource type="Theme" id="Theme_j2q8x"]
+Panel/styles/panel = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy5k4"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxiqb"]
+line_spacing = 10.04
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q8x"]
+bg_color = Color(0.66245234, 0.66245234, 0.6624523, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_112p8"]
+bg_color = Color(0.35906905, 0.35906908, 0.35906896, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="node" type="Node2D" unique_id=1458295836 node_paths=PackedStringArray("nameLabel")]
+script = ExtResource("1_sy5k4")
+nameLabel = NodePath("Container/Label")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=369732595]
+default_color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=775953664]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_j2q8x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sy5k4")
+
+[node name="Container" type="FlowContainer" parent="." unique_id=518628935]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Container" unique_id=683232015]
+layout_mode = 2
+size_flags_vertical = 3
+text = "name place holder"
+label_settings = SubResource("LabelSettings_nxiqb")
+horizontal_alignment = 1
+
+[node name="addChild" type="Button" parent="Container" unique_id=871314211]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_j2q8x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_112p8")
+text = "add child"
+
+[connection signal="pressed" from="Container/addChild" to="." method="_on_add_child_pressed"]

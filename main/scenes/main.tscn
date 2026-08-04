@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bo2t4g63xjyxe"]
+
+[ext_resource type="Script" uid="uid://bw84x1o31itxt" path="res://main/scripts/treeloader.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bylxb6myidm03" path="res://camera_2d.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cthjy0uarg7ws" path="res://main/sidebar.tscn" id="3_ly4ot"]
+
+[node name="Control" type="Node2D" unique_id=66665538 groups=["nodes"]]
+script = ExtResource("1_ig7tw")
+evotreepathlocal = "res://evotree.json"
+rootPosition = Vector2(545, 137)
+sideOffset = 100.0
+
+[node name="createRoot" type="Button" parent="." unique_id=1561278780]
+offset_left = 506.0
+offset_top = 64.0
+offset_right = 594.0
+offset_bottom = 95.0
+text = "make root"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1415418193]
+position = Vector2(545, 137)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=893535178]
+position = Vector2(572.7, 323.505)
+script = ExtResource("2_0xm2m")
+
+[node name="Control" parent="Camera2D" unique_id=1188306244 instance=ExtResource("3_ly4ot")]
+offset_left = -578.7
+offset_top = -320.505
+offset_right = -448.7
+offset_bottom = -133.505
+
+[connection signal="pressed" from="createRoot" to="." method="_on_create_root_pressed"]

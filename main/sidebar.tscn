@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cthjy0uarg7ws"]
+
+[ext_resource type="Script" uid="uid://bvd8gprrewf53" path="res://main/scripts/Sidebar.gd" id="1_t5jtl"]
+
+[node name="Sidebar" type="Panel" unique_id=1188306244]
+offset_right = 130.0
+offset_bottom = 187.0
+script = ExtResource("1_t5jtl")
+
+[node name="World" type="Button" parent="." unique_id=230995490]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 61.0
+offset_bottom = 40.0
+text = "World"
+
+[node name="Editor" type="Button" parent="." unique_id=93910300]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 103.0
+offset_right = 58.0
+offset_bottom = 134.0
+text = "Editor"
+
+[node name="Evolution" type="Button" parent="." unique_id=948741312]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 120.0
+offset_bottom = 85.0
+text = "Evolution tree"
+
+[node name="Notes" type="Button" parent="." unique_id=979191269]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 142.0
+offset_right = 56.0
+offset_bottom = 173.0
+text = "Notes
+"
+
+[connection signal="pressed" from="World" to="." method="_on_world_pressed"]
+[connection signal="pressed" from="Editor" to="." method="_on_editor_pressed"]
+[connection signal="pressed" from="Evolution" to="." method="_on_evolution_pressed"]
+[connection signal="pressed" from="Notes" to="." method="_on_notes_pressed"]
