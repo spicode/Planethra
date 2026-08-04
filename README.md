@@ -16,3 +16,6 @@
 ### Plate Tectonics
 ### Moons 
 ### Sky object visblitys
+<br><br>
+
+## Planing to move away from godot maybe C++
