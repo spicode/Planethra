@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://bq3gbtkexkrw1" path="res://start/galaxymake.gd" id="3_pgi65"]
 [ext_resource type="Script" uid="uid://dina4f0boe7sn" path="res://start/stellar_nighborhoodMaker.gd" id="4_k11ym"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_s0q5u"]
+font_size = 25
+font_color = Color(1, 0.36, 0.36, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k11ym"]
+font_color = Color(1, 1, 0.69803923, 1)
+
 [node name="start" type="Control" unique_id=1499677919]
 layout_mode = 3
 anchors_preset = 15
@@ -25,10 +32,11 @@ offset_right = 1159.0
 offset_bottom = 654.0
 current_tab = 1
 
-[node name="Galaxy" type="PanelContainer" parent="TabContainer" unique_id=204116451]
+[node name="Galaxy" type="PanelContainer" parent="TabContainer" unique_id=204116451 node_paths=PackedStringArray("main")]
 visible = false
 layout_mode = 2
 script = ExtResource("3_pgi65")
+main = NodePath("../..")
 metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Galaxy" unique_id=1018075628]
@@ -67,9 +75,10 @@ text = "Galactic Habitable Zone(kly):"
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Stellar nighborhood" type="PanelContainer" parent="TabContainer" unique_id=1398136542]
+[node name="Stellar nighborhood" type="PanelContainer" parent="TabContainer" unique_id=1398136542 node_paths=PackedStringArray("main")]
 layout_mode = 2
 script = ExtResource("4_k11ym")
+main = NodePath("../..")
 metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stellar nighborhood" unique_id=2032916494]
@@ -79,36 +88,62 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-offset_transform_enabled = true
 offset_transform_position = Vector2(0, 8.175)
 offset_transform_visual_only = false
 text = "nighborhood"
+label_settings = SubResource("LabelSettings_s0q5u")
 
 [node name="Note" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1580649568]
 layout_mode = 2
-text = "Note: this step it optional there is no relice on the steo from the previos ones"
+size_flags_horizontal = 4
+text = "Note: this step it optional there is no relince on this step from the previos ones"
+label_settings = SubResource("LabelSettings_k11ym")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1039990987]
+[node name="Size" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1039990987]
 layout_mode = 2
 
-[node name="size" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=1201557916]
+[node name="radius" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/Size" unique_id=1201557916]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 8.175)
 offset_transform_visual_only = false
-text = "size  "
+text = "radius"
 
-[node name="LineEdit" type="SpinBox" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=314396728]
+[node name="LineEdit" type="SpinBox" parent="TabContainer/Stellar nighborhood/VBoxContainer/Size" unique_id=314396728]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer" unique_id=1189834973]
+[node name="Location" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=413308342]
 layout_mode = 2
-text = "0 light year"
 
-[node name="Button" type="Button" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=61949454]
+[node name="location" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/Location" unique_id=579464601]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_position = Vector2(0, 8.175)
+offset_transform_visual_only = false
+text = "Location( how far away from center in kilo light years)"
+
+[node name="location2" type="SpinBox" parent="TabContainer/Stellar nighborhood/VBoxContainer/Location" unique_id=2132977998]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Warning" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/Location" unique_id=1093191014]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Location not in range"
+
+[node name="Label2" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1189834973]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "objects amount: 0 "
+
+[node name="Button" type="Button" parent="TabContainer/Stellar nighborhood" unique_id=61949454]
+visible = false
 layout_mode = 2
 text = "see 3d nieghborhood"
 
@@ -128,4 +163,5 @@ layout_mode = 2
 metadata/_tab_index = 4
 
 [connection signal="value_changed" from="TabContainer/Galaxy/VBoxContainer/Container/LineEdit" to="TabContainer/Galaxy" method="_on_line_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/HBoxContainer/LineEdit" to="TabContainer/Stellar nighborhood" method="_on_line_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Size/LineEdit" to="TabContainer/Stellar nighborhood" method="_on_line_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Location/location2" to="TabContainer/Stellar nighborhood" method="_on_location_2_value_changed"]

@@ -56,3 +56,5 @@ func Kelvin2Rgb(Temperature:int) -> Color:
 
 	var rgb = Color(round(Red),round(Green),round(Blue))
 	return rgb;
+func is_in_range(min,max,value) -> bool:
+	return value>min and value < max
