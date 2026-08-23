@@ -117,6 +117,7 @@ func addChildNode(_Name: String, parent:String,siblingNum):
 	get_tree().reload_current_scene()
 func treeHasRoot()->bool:
 	var file = FileAccess.open(evotreepathlocal,FileAccess.READ_WRITE)
+
 	assert(file.file_exists(evotreepathlocal),"uhh.. where is evotree sure not in given path")
 	var json = file.get_as_text()
 	var json_object = JSON.new()

@@ -137,14 +137,260 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Location not in range"
 
+[node name="Stellar dencity" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1508252986]
+layout_mode = 2
+
+[node name="Stellar Density" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/Stellar dencity" unique_id=218037035]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_position = Vector2(0, 8.175)
+offset_transform_visual_only = false
+text = "Stellar Density (stars/ly^3)"
+
+[node name="Stellar Density2" type="SpinBox" parent="TabContainer/Stellar nighborhood/VBoxContainer/Stellar dencity" unique_id=785231214]
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.001
+value = 0.003
+
 [node name="Label2" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1189834973]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "objects amount: 0 "
 
-[node name="Button" type="Button" parent="TabContainer/Stellar nighborhood" unique_id=61949454]
-visible = false
+[node name="FoldableContainer" type="FoldableContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1012499017]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer" unique_id=1777979550]
+layout_mode = 2
+
+[node name="Label" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=166652193]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Label" unique_id=1445467765]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Type"
+
+[node name="Class" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Label" unique_id=1050576897]
+layout_mode = 2
+size_flags_horizontal = 10
+text = " CLASS"
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Label" unique_id=212836418]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "NUMBER"
+
+[node name="O" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=761368334]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/O" unique_id=84986389]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Main Sequence Stars"
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/O" unique_id=1574778346]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "O"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/O" unique_id=1078380547]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="B" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1313002280]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/B" unique_id=1227257412]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/B" unique_id=463600492]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "B"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/B" unique_id=1158586115]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="A" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1090595459]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/A" unique_id=1479708214]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/A" unique_id=1440981901]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/A" unique_id=1049085325]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="F" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=865683569]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/F" unique_id=1460028384]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/F" unique_id=903662243]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/F" unique_id=459148445]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="G" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=17798369]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/G" unique_id=458927541]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/G" unique_id=982788448]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "G"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/G" unique_id=1671683628]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="K" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1310446594]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/K" unique_id=2023352517]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/K" unique_id=563019319]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "K"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/K" unique_id=1053833776]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="M" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1295104438]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/M" unique_id=1344303557]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/M" unique_id=483849837]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "M"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/M" unique_id=1604791325]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="D" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1661737362]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/D" unique_id=350551078]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "White Dwarfs"
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/D" unique_id=1921060463]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/D" unique_id=2129539385]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="LTY" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1303073656]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/LTY" unique_id=1350396797]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Brown Dwarfs"
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/LTY" unique_id=1109107856]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "L/T/Y"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/LTY" unique_id=475438520]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="Other" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=1653856841]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Other" unique_id=1855401588]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Other Stellar Mass Objects"
+horizontal_alignment = 1
+
+[node name="CLass" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Other" unique_id=404243184]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-"
+horizontal_alignment = 1
+
+[node name="NUMBER" type="Label" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer/Other" unique_id=1802128667]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=61949454]
+layout_mode = 2
+size_flags_vertical = 4
 text = "see 3d nieghborhood"
 
 [node name="Star" type="PanelContainer" parent="TabContainer" unique_id=1991512021]
@@ -165,3 +411,4 @@ metadata/_tab_index = 4
 [connection signal="value_changed" from="TabContainer/Galaxy/VBoxContainer/Container/LineEdit" to="TabContainer/Galaxy" method="_on_line_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Size/LineEdit" to="TabContainer/Stellar nighborhood" method="_on_line_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Location/location2" to="TabContainer/Stellar nighborhood" method="_on_location_2_value_changed"]
+[connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Stellar dencity/Stellar Density2" to="TabContainer/Stellar nighborhood" method="_on_stellar_density_2_value_changed"]

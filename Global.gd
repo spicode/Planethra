@@ -4,7 +4,7 @@ var selectedNode="fuca"
 var evotreepath
 var activeScene
 # takes a kelvin temprature and returns an rgb color. idk how it works
-func Kelvin2Rgb(Temperature:int) -> Color:
+func Kelvin2Rgb(Temperature:float) -> Color:
 	Temperature = Temperature / 100;
 	var Red
 	var Green
@@ -56,5 +56,5 @@ func Kelvin2Rgb(Temperature:int) -> Color:
 
 	var rgb = Color(round(Red),round(Green),round(Blue))
 	return rgb;
-func is_in_range(min,max,value) -> bool:
-	return value>min and value < max
+func is_in_range(_min,_max,value) -> bool:
+	return value>_min and value < _max
