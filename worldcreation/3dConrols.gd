@@ -4,30 +4,37 @@ extends Camera3D
 
 
 func _process(delta: float) -> void:
-	
-	if Input.is_action_pressed("scrollUp"):
-		speed+=3
-		print("speed UP")
-	if Input.is_action_pressed("scrollDown"):
-		print("speed UP")
-		speed-=3
-	if Input.is_action_pressed("up"):
-		global_position.y+=speed*delta
-	elif Input.is_action_pressed("down"):
-		global_position.y-=speed*delta
+	$"../Control/sensitivity".text=str('sensitivty:',senstivty)
+	senstivty= $"../Control/sensitivtyy".value
+	$"../Control/speed".text=str('speed=',speed," use scroll wheel to change")
+	var move := Vector3.ZERO
 	if Input.is_action_pressed("forwards"):
-		global_position.z-=speed*delta
+		move -= transform.basis.z   # camera looks down -Z
 	if Input.is_action_pressed("backwards"):
-		global_position.z+=speed*delta
+		move += transform.basis.z
 	if Input.is_action_pressed("left"):
-		global_position.x-=speed*delta
+		move -= transform.basis.x
 	if Input.is_action_pressed("right"):
-		global_position.x+=speed*delta
+		move += transform.basis.x
+	if Input.is_action_pressed("up"):
+		move += transform.basis.y
+	if Input.is_action_pressed("down"):
+		move -= transform.basis.y
+
+	if move != Vector3.ZERO:
+		global_position += move.normalized() * speed * delta
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var senstivtyAngle= pow(senstivty,-1)
 		rotate_object_local(Vector3.UP,-event.relative.x*senstivtyAngle)
 		rotate_object_local(Vector3.LEFT,event.relative.y*senstivtyAngle)
+	elif event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			speed += 3
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			speed -= 3
 func _ready() -> void:
-	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
-	
+	Input.mouse_mode= Input.MOUSE_MODE_CAPTURED
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED

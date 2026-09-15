@@ -16,3 +16,33 @@ speed = 44
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1819656325]
 environment = SubResource("Environment_inali")
+
+[node name="Control" type="Control" parent="." unique_id=1280970558]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="speed" type="Label" parent="Control" unique_id=255579059]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.57500005
+
+[node name="sensitivity" type="Label" parent="Control" unique_id=1782351557]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 131.0
+offset_right = 580.0
+offset_bottom = 154.0
+
+[node name="sensitivtyy" type="HSlider" parent="Control" unique_id=1386242515]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 98.0
+offset_right = 654.0
+offset_bottom = 114.0
+min_value = 100.0
+max_value = 2000.0
+step = 20.0
+value = 400.0

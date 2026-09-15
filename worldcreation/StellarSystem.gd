@@ -19,9 +19,8 @@ var ClassToMass = {
 	"D": [0.5, 0.7, 1.3],
 	"LTY": [0.012415, 0.0764, 1.3],
 	"OTHER": [30, 2000, 5],
-	
 }
-var orbitalStablePoint=20#idk what it should actualy be
+var orbitalStablePoint=50#idk what it should actualy be
 var SType: SystemType
 var Planets: Array[Planet]
 var Stars: Array[Star]
@@ -32,6 +31,22 @@ var _rng := RandomNumberGenerator.new()
 func _init():
 	_rng.randomize()
 	
+func makeHomeStellarSystem(Type, starMasses: Array[float]):
+	
+	for star in starMasses:
+		#var starType
+		#for mass in ClassToMass.values():
+			#if Global.is_in_range(mass[0],mass[1],star):
+				#starType=ClassToMass.find_key(mass)
+		Location=Vector3.ZERO
+		var _star=Star.new()
+		_star.makeStar(star)
+		var distFromGravCenter=(starMasses.size()-1)*orbitalStablePoint
+		var starOfset=360/starMasses.size()
+		_star.starLocation=Vector3((Vector2.from_angle(deg_to_rad(starOfset*star))*distFromGravCenter).x,\
+		(Vector2.from_angle(deg_to_rad(starOfset*star))*distFromGravCenter).y,0)
+		Stars.append(_star)
+	return self
 func makeStellarSystem(Type, starTypes: Array[String],Neiborhood_size:float):
 	var r=randf_range(1,Neiborhood_size)
 	var theta= randf()*(randi()%360)

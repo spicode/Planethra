@@ -32,7 +32,7 @@ class Temps:
 	var temp_triples
 	var temp_doubles
 	var temp_singles
-func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize)->StellarNighborhood:
+func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize,has_home=false,home_star_mass=0)->StellarNighborhood:
 	B = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0013))
 	O = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0000003))
 	A = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.006))
@@ -110,7 +110,10 @@ func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize)->Stel
 		var cursystem=StellarSystem.new()
 		cursystem= cursystem.makeStellarSystem(system_type,starTypes,_nighborhoodsize)
 		stars.append(cursystem)
-	
+	if has_home:
+		var HomeSys=StellarSystem.new()
+		HomeSys.makeHomeStellarSystem(StellarSystem.SystemType.SINGLE,[home_star_mass])
+		stars.append(HomeSys)
 	return self
 func randomStarType(temps):
 	var keys = Star.starType.keys()

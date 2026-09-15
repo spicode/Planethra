@@ -5,6 +5,7 @@ extends PanelContainer
 var nighborhoodsize=10
 var nieghborhood_density=0.003
 var nieghborhood=StellarNighborhood.new()
+var homeStarMass=1
 func _on_line_edit_value_changed(value: float) -> void:
 	nighborhoodsize=value
 	main.nbrhdRadius= value
@@ -22,7 +23,7 @@ func _on_location_2_value_changed(value: float) -> void:
 		$VBoxContainer/Location/Warning.visible=false
 		
 func updateNieghborhood():
-	nieghborhood=nieghborhood.classify_stellar_nieghborhood(nieghborhood_density,nighborhoodsize)
+	nieghborhood=nieghborhood.classify_stellar_nieghborhood(nieghborhood_density,nighborhoodsize,true,homeStarMass)
 	$VBoxContainer/FoldableContainer/VBoxContainer/O/NUMBER.text=str(nieghborhood.O)
 	$VBoxContainer/FoldableContainer/VBoxContainer/B/NUMBER.text=str(nieghborhood.B)
 	$VBoxContainer/FoldableContainer/VBoxContainer/A/NUMBER.text=str(nieghborhood.A)
@@ -43,3 +44,7 @@ func _on_stellar_density_2_value_changed(value: float) -> void:
 func _on_button_pressed() -> void:
 	Global.nieborhood=nieghborhood
 	get_tree().change_scene_to_file("uid://c6so7pchh4mrt")
+
+
+func _on_home_star_mass_num_value_changed(value: float) -> void:
+	homeStarMass=value
