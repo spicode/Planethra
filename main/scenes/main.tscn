@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bo2t4g63xjyxe"]
 
 [ext_resource type="Script" uid="uid://bw84x1o31itxt" path="res://main/scripts/treeloader.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bylxb6myidm03" path="res://camera_2d.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bylxb6myidm03" path="res://main/camera_2d.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cthjy0uarg7ws" path="res://main/sidebar.tscn" id="3_ly4ot"]
 
 [node name="Control" type="Node2D" unique_id=66665538 groups=["nodes"]]
 script = ExtResource("1_ig7tw")
-evotreepathlocal = "res://evotree.json"
 rootPosition = Vector2(545, 137)
 sideOffset = 100.0
 

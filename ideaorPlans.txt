@@ -1,0 +1,3 @@
+Dyson swarm calculaion 
+vars: stalite density, stalite size, power efectivness,
+orbit distance, stalite num(editable output)->power generation

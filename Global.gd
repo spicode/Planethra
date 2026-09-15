@@ -3,6 +3,9 @@ var isDragging
 var selectedNode="fuca"
 var evotreepath
 var activeScene
+var saveloadMain :Saveload#just to move the saveload node from the evoltion view to editor 
+var fullSaveName#another try ^^
+var nieborhood:StellarNighborhood
 # takes a kelvin temprature and returns an rgb color. idk how it works
 func Kelvin2Rgb(Temperature:float) -> Color:
 	Temperature = Temperature / 100;

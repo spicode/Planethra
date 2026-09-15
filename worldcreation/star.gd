@@ -22,6 +22,7 @@ var temprature
 var _color
 var habitableZone:Array[float]
 var type
+var starLocation
 var linkedStars:Array[Star]
 var System:StellarSystem
 func makeStar(_mass,_currentAge=1.00) -> Star:

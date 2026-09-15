@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bcn8bvr8bit4k"]
 
-[ext_resource type="Script" uid="uid://cngj0wmvi825i" path="res://start/start.gd" id="1_275hl"]
+[ext_resource type="Script" uid="uid://cngj0wmvi825i" path="res://worldcreation/start.gd" id="1_275hl"]
 [ext_resource type="PackedScene" uid="uid://cthjy0uarg7ws" path="res://main/sidebar.tscn" id="2_pgi65"]
-[ext_resource type="Script" uid="uid://bq3gbtkexkrw1" path="res://start/galaxymake.gd" id="3_pgi65"]
-[ext_resource type="Script" uid="uid://dina4f0boe7sn" path="res://start/stellar_nighborhoodMaker.gd" id="4_k11ym"]
+[ext_resource type="Script" uid="uid://bq3gbtkexkrw1" path="res://worldcreation/galaxymake.gd" id="3_pgi65"]
+[ext_resource type="Script" uid="uid://dina4f0boe7sn" path="res://worldcreation/stellar_nighborhoodMaker.gd" id="4_k11ym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s0q5u"]
 font_size = 25
@@ -162,8 +162,11 @@ text = "objects amount: 0 "
 
 [node name="FoldableContainer" type="FoldableContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer" unique_id=1012499017]
 layout_mode = 2
+folded = true
+title = "Star types"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer" unique_id=1777979550]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="HBoxContainer" parent="TabContainer/Stellar nighborhood/VBoxContainer/FoldableContainer/VBoxContainer" unique_id=166652193]
@@ -412,3 +415,4 @@ metadata/_tab_index = 4
 [connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Size/LineEdit" to="TabContainer/Stellar nighborhood" method="_on_line_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Location/location2" to="TabContainer/Stellar nighborhood" method="_on_location_2_value_changed"]
 [connection signal="value_changed" from="TabContainer/Stellar nighborhood/VBoxContainer/Stellar dencity/Stellar Density2" to="TabContainer/Stellar nighborhood" method="_on_stellar_density_2_value_changed"]
+[connection signal="pressed" from="TabContainer/Stellar nighborhood/VBoxContainer/Button" to="TabContainer/Stellar nighborhood" method="_on_button_pressed"]

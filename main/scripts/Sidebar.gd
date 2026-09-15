@@ -12,15 +12,15 @@ func _ready() -> void:
 
 
 func _on_world_pressed() -> void:
-	get_tree().change_scene_to_file("res://start/start.tscn")
+	get_tree().change_scene_to_file("uid://bcn8bvr8bit4k")
 
 
 func _on_editor_pressed() -> void:
-	get_tree().change_scene_to_file("res://main/scenes/editor.tscn")
+	get_tree().change_scene_to_file("uid://c1tnfs2cpecni")
 
 
 func _on_evolution_pressed() -> void:
-	get_tree().change_scene_to_file("res://main/scenes/main.tscn")
+	get_tree().change_scene_to_file("uid://bo2t4g63xjyxe")
 
 
 func _on_notes_pressed() -> void:

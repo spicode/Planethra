@@ -4,28 +4,31 @@ var dictevotree
 var Name
 const MAIN = "res://main/scenes/main.tscn"
 var pathToImage
+
 func _enter_tree() -> void:
-	Global.activeScene="Editor"
+	Global.activeScene = "Editor"
+
 func _ready() -> void:
-	get_tree().root.files_dropped.connect(_on_files)	
-	var file = FileAccess.open(Global.evotreepath,FileAccess.READ_WRITE)
-	assert(file.file_exists(Global.evotreepath),"uhh.. where is evotree sure not in given path")
-	var json = file.get_as_text()
-	var json_object = JSON.new()
-	json_object.parse(json)
-	printerr(json_object.get_error_message())
-	Name=Global.selectedNode
+	get_tree().root.files_dropped.connect(_on_files)
+
+	dictevotree = Saveload.loadData()
+	Name = Global.selectedNode
 	if not Name:
-		Name="fuca"
-	dictevotree = json_object.data
+		Name = "fuca"
+
 	$LineEdit.text = Name
-	if dictevotree[Name].has("discription"):
-		$TextEdit.text=dictevotree[Name]["discription"]
-	if dictevotree[Name].has("image"):
-		var img = Image.new()
-		img.load(dictevotree[Name]["image"])
-		if img:
-			$TextureRect.texture =ImageTexture.new().create_from_image(img)
+	if dictevotree.has(Name):
+		if dictevotree[Name].has("discription"):
+			$TextEdit.text = dictevotree[Name]["discription"]
+		if dictevotree[Name].has("image"):
+			if dictevotree[Name]["image"]:
+				var img = Image.new()
+				var err = img.load(dictevotree[Name]["image"])
+				if err == OK:
+					$TextureRect.texture = ImageTexture.create_from_image(img)
+	else:
+		
+		printerr("editor: no node named ", Name, " in save data")
 func _on_button_pressed() -> void:
 	var oldName =  Name
 	var newName = $LineEdit.text.strip_edges()
@@ -50,7 +53,7 @@ func _on_button_pressed() -> void:
 		Name = newName 
 	else:
 		dictevotree[oldName] = nodeData
-	var file_write = FileAccess.open(Global.evotreepath, FileAccess.WRITE)
+	var file_write = FileAccess.open(Saveload.getLocalPath(Saveload.get_full_savename()), FileAccess.WRITE)
 	var json_output = JSON.stringify(dictevotree, "\t")
 	file_write.store_string(json_output)
 	file_write.close()
@@ -86,17 +89,17 @@ func _on_delete_pressed() -> void:
 	if dictevotree.has(Global.selectedNode):
 		deleteChildren(Global.selectedNode)
 	get_tree().change_scene_to_file(MAIN)
-func deleteChildren(Name):
-	for child in dictevotree[Name]["childeren"]:
+func deleteChildren(_Name=Name):
+	for child in dictevotree[_Name]["childeren"]:
 		deleteChildren(child)
 	
 	
 	# update parents children list
-	var parentName =  dictevotree[Name].get("Parent")
+	var parentName =  dictevotree[_Name].get("Parent")
 	if parentName and dictevotree.has(parentName):
-		var cid = dictevotree[parentName]["childeren"].find(Name)
+		var cid = dictevotree[parentName]["childeren"].find(_Name)
 		dictevotree[parentName]["childeren"].remove_at(cid)
-	dictevotree.erase(Name)
+	dictevotree.erase(_Name)
 	var file_write = FileAccess.open(Global.evotreepath, FileAccess.WRITE)
 	var json_output = JSON.stringify(dictevotree, "\t")
 	file_write.store_string(json_output)

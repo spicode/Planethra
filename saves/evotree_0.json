@@ -1,0 +1,33 @@
+{
+	"bas": {
+		"Parent": "hi",
+		"childeren": [],
+		"distance_to_parent": 92.0,
+		"name": "bas"
+	},
+	"fuca": {
+		"Parent": null,
+		"childeren": [
+			"hi"
+		],
+		"distance_to_parent": 0.0,
+		"name": "fuca"
+	},
+	"hi": {
+		"Parent": "fuca",
+		"childeren": [
+			"sdas\\",
+			"bas"
+		],
+		"discription": "saddsaddaf",
+		"distance_to_parent": 195.505004882812,
+		"image": null,
+		"name": "hi"
+	},
+	"sdas\\": {
+		"Parent": "hi",
+		"childeren": [],
+		"distance_to_parent": 160.0,
+		"name": "sdas\\"
+	}
+}

@@ -32,18 +32,19 @@ class Temps:
 	var temp_triples
 	var temp_doubles
 	var temp_singles
-func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize):
-	B = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0013),0)
-	O = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0000003),0)
-	A = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.006),0)
-	F = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.03),0)
-	G = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.076),0)
-	K = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.121),0)
-	M = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.7645),0)
-	D = snapped(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.09),0)
-	LTY= snapped((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))/2.5,0)
+func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize)->StellarNighborhood:
+	B = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0013))
+	O = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.0000003))
+	A = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.006))
+	F = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.03))
+	G = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.076))
+	K = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.121))
+	M = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.7645))
+	D = round(((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.9*0.09))
+	LTY= round((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))/2.5)
 	other=floor((_nieghborhood_density*((4.0/3.0)*PI*_nighborhoodsize**3.0))*0.01)
 	total=O+B+A+F+G+K+M+D+LTY+other
+	
 	var temps= Temps.new()
 	temps.O_Temp=O
 	temps.B_Temp=B
@@ -107,7 +108,9 @@ func classify_stellar_nieghborhood(_nieghborhood_density,_nighborhoodsize):
 				starTypes.append(type4)
 				temps.temp_quadroplesPlus-=1
 		var cursystem=StellarSystem.new()
-		cursystem.makeStellarSystem(system_type,starTypes)
+		cursystem= cursystem.makeStellarSystem(system_type,starTypes,_nighborhoodsize)
+		stars.append(cursystem)
+	
 	return self
 func randomStarType(temps):
 	var keys = Star.starType.keys()
@@ -148,7 +151,6 @@ func randomStarType(temps):
 				if temps.Other_Temp>0:
 					break
 		type = keys[randi_range(0, keys.size() - 1)]
-	print(type)
 	return type
 func removeStarFromTemp(type,temps):
 	match type:# I thought how to not repeat this but i came with nothing

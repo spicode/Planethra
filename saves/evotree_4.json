@@ -1,0 +1,16 @@
+{
+	"cool guy": {
+		"Parent": "fuca",
+		"childeren": [],
+		"distance_to_parent": 78.5050048828125,
+		"name": "cool guy"
+	},
+	"fuca": {
+		"Parent": null,
+		"childeren": [
+			"cool guy"
+		],
+		"distance_to_parent": 0.0,
+		"name": "fuca"
+	}
+}

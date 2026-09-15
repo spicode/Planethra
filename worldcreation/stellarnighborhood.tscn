@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6so7pchh4mrt"]
+
+[ext_resource type="Script" uid="uid://brj3h0lrifdb" path="res://worldcreation/stellarnighborhood.gd" id="1_q2mbo"]
+[ext_resource type="Script" uid="uid://d1acptjcalgea" path="res://worldcreation/3dConrols.gd" id="2_wjplq"]
+
+[sub_resource type="Environment" id="Environment_inali"]
+background_mode = 2
+
+[node name="Node3D" type="Node3D" unique_id=7774664]
+script = ExtResource("1_q2mbo")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=862565759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.366808)
+script = ExtResource("2_wjplq")
+speed = 44
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1819656325]
+environment = SubResource("Environment_inali")

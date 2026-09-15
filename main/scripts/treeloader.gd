@@ -1,7 +1,9 @@
+#main.gd
 extends Node2D
 #TODO WHEN FINDING Gets slow add ids and find by binary search
+#TODO Current task save load system
 const NODE = preload("uid://b680gedqhnsbt")
-@export var evotreepathlocal : String 
+@export var baseTreePath : String 
 @export var rootPosition : Vector2
 @export_group("sibling offset")
 @export var sideOffset := 50.0
@@ -14,7 +16,9 @@ func _enter_tree() -> void:
 	Global.activeScene="Evolution tree"
 func _ready() -> void:
 	Global.selectedNode=null
-	
+	Saveload.set_savename("evotree")
+	Global.saveloadMain=Saveload
+	Global.fullSaveName=Saveload.get_save_id()
 	loadTree()
 	emit_signal("treeDone")
 func loadTree():
@@ -26,14 +30,8 @@ func loadTree():
 		$createRoot.queue_free()
 	elif not treeHasRoot():
 		return
-	Global.evotreepath = evotreepathlocal
-	var file = FileAccess.open(evotreepathlocal,FileAccess.READ_WRITE)
-	assert(file.file_exists(evotreepathlocal),"uhh.. where is evotree sure not in given path")
-	var json = file.get_as_text()
-	var json_object = JSON.new()
-	json_object.parse(json)
-	printerr(json_object.get_error_message())
-	dictevotree = json_object.data
+	
+	dictevotree = Saveload.loadData()
 	loadChildNodes("fuca",null)
 func loadChildNodes(Name:String,Parent):
 
@@ -78,15 +76,7 @@ func _on_create_root_pressed() -> void:
 func addNodeToJson(Name: String, Parent) -> void:
 	var jdata: Dictionary = {}
 	
-	if FileAccess.file_exists(evotreepathlocal):
-		var file_read = FileAccess.open(evotreepathlocal, FileAccess.READ)
-		var json_text = file_read.get_as_text()
-		file_read.close()
-		
-		if json_text.strip_edges() != "":
-			var json_object = JSON.new()
-			if json_object.parse(json_text) == OK:
-				jdata = json_object.data
+	jdata =getSaveData()
 
 	jdata[Name] = {
 		"name": Name,
@@ -99,10 +89,7 @@ func addNodeToJson(Name: String, Parent) -> void:
 		if not jdata[Parent]["childeren"].has(Name):
 			jdata[Parent]["childeren"].append(Name)
 			
-	var file_write = FileAccess.open(evotreepathlocal, FileAccess.WRITE)
-	var json_output = JSON.stringify(jdata, "\t")
-	file_write.store_string(json_output)
-	file_write.close()
+	Saveload.save(jdata)
 func addChildNode(_Name: String, parent:String,siblingNum):
 	var newNode := NODE.instantiate()
 	newNode.global_position = Vector2(get_node(parent).global_position.x+(sideOffset*siblingNum),get_node(parent).global_position.y+defualtDownOffset) 
@@ -116,43 +103,24 @@ func addChildNode(_Name: String, parent:String,siblingNum):
 	loadedNodes.append(get_node(_Name))
 	get_tree().reload_current_scene()
 func treeHasRoot()->bool:
-	var file = FileAccess.open(evotreepathlocal,FileAccess.READ_WRITE)
 
-	assert(file.file_exists(evotreepathlocal),"uhh.. where is evotree sure not in given path")
-	var json = file.get_as_text()
-	var json_object = JSON.new()
-	json_object.parse(json)
-	print(json_object.get_error_message())
-	var jdata = json_object.data
+	var jdata = getSaveData()
 	if jdata:
 		return true
 	return false
 func saveMousePos(Name,parent):
-	var jdata: Dictionary = {}
-
-	if FileAccess.file_exists(evotreepathlocal):
-		var file_read = FileAccess.open(evotreepathlocal, FileAccess.READ)
-		var json_text = file_read.get_as_text()
-		file_read.close()
-		
-		if json_text.strip_edges() != "":
-			var json_object = JSON.new()
-			if json_object.parse(json_text) == OK:
-				jdata = json_object.data
+	var jdata: Dictionary = getSaveData()
 	if not parent:
 		jdata[Name]["distance_to_parent"]= get_node(str(Name)).global_position.y
 	else:
 		if parent and Name and get_node_or_null(str(Name)) and get_node_or_null(str(parent)):
-			
 			var dist=get_node(str(Name)).global_position.y-get_node(str(parent)).global_position.y
 			jdata[Name]["distance_to_parent"]=dist
-	var file_write = FileAccess.open(evotreepathlocal, FileAccess.WRITE)
-	var json_output = JSON.stringify(jdata, "\t")
-	file_write.store_string(json_output)
-	file_write.close()
+	Saveload.save(jdata)
 	for child in jdata[Name]["childeren"]:
 		saveMousePos(child,Name)
-
+func getSaveData():
+	return Saveload.loadData(Saveload.getLocalPath(Saveload.get_full_savename()))
 
 func _on_editor_pressed() -> void:
 	pass # Replace with function body.
